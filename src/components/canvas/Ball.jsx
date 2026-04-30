@@ -1,10 +1,15 @@
+"use client";
+
 import React, {Suspense} from 'react';
 import { Canvas } from '@react-three/fiber';
 import {Decal, Float, OrbitControls, Preload, useTexture} from '@react-three/drei';
 import CanvasLoader from '../Loader';
 
+const resolveAssetUrl = (asset) =>
+  typeof asset === 'string' ? asset : asset?.src ?? '';
+
 const Ball = (props) => {
-  const [decal] = useTexture([props.imgUrl])
+  const [decal] = useTexture([resolveAssetUrl(props.imgUrl)])
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />

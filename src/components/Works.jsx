@@ -1,30 +1,27 @@
-import {Tilt} from 'react-tilt';
+"use client";
+
 import { motion } from 'framer-motion';
+import { FaGithub } from 'react-icons/fa6';
 import { styles } from '../styles';
-import { github } from '../assets';
 import { SectionWrapper } from '../hoc';
-import {projects} from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 
 const ProjectCard = ({index, name, description, tags, image, source_code_link})=> {
   return(
-    <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1, 
-          speed: 450,
-        }}
-        className='bg-tertiary p-5 rounded-2xl w-full sm:w-[360px] '
-      >
+    <motion.div
+      variants={fadeIn('up', 'spring', index * 0.5, 0.75)}
+      whileHover={{ y: -10, rotateX: 4, rotateY: -4 }}
+      transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+      className='bg-tertiary p-5 rounded-2xl w-full sm:w-[360px] [transform-style:preserve-3d]'
+    >
         <div className='relative w-full h-[230px]'>
           <img src={image} alt={name} className='w-full h-full object-cover rounded-2xl '/>
-        </div>
-        <div className='absolute inset-3 flex justify-end m-3 card-img_hover'>
-          <div className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-            onClick={() => window.open(source_code_link, '_blank')}
-          >
-            <img src={github} alt="github" className='w-1/2 h-1/2 objct-contain '  />
+          <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
+            <div className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+              onClick={() => window.open(source_code_link, '_blank')}
+            >
+              <FaGithub className='h-5 w-5 text-white' aria-hidden='true' />
+            </div>
           </div>
         </div>
         <div>
@@ -32,32 +29,28 @@ const ProjectCard = ({index, name, description, tags, image, source_code_link})=
           <p className='mt-2 text-secondary text-[14px]'>{description}</p>
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
-          {tags.map(tag => (console.log(tag.name),
+          {tags.map(tag => (
             <p key={tag.name} className={ `text-[14px] ${tag.color}`}>#{tag.name}</p>
           ))}
         </div>
-      </Tilt>
+      
     </motion.div>
   )
 }
 
-const Works = () => {
+const Works = ({ copy, projects }) => {
   return (
     <>
     <motion.div variants={textVariant()}>
-      <p className={`${styles.heroSubText} uppercase `}>My Projects</p>
-      <h2 className={`${styles.heroHeadText}`}>Projects</h2>
+      <p className={`${styles.heroSubText} uppercase `}>{copy.intro}</p>
+      <h2 className={`${styles.heroHeadText}`}>{copy.title}</h2>
     </motion.div>
     <div className='flex w-full'>
     <motion.p 
       variants={fadeIn('', '', 0.1, 1)}
       className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px] '
     >
-      Following projects showcases my skills and experience through
-      real-world examples of my work. Each project is briefly described with
-      links to code repositories and live demos in it. It reflects my
-      ability to solve complex problems, work with different technologies,
-      and manage projects effectively.
+      {copy.description}
     </motion.p>
     </div>
     <div className='mt-20 flex flex-wrap gap-7'>

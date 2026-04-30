@@ -19,6 +19,19 @@
   display: block;
 }
 
+html[dir="rtl"] .experience-timeline {
+  direction: ltr;
+}
+
+html[dir="rtl"] .experience-timeline .experience-card-content {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .experience-timeline .experience-card-content ul li {
+  flex-direction: row-reverse;
+}
+
 .black-gradient {
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(

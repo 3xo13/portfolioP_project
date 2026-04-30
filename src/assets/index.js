@@ -22,6 +22,7 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.png";
 
 import meta from "./company/meta.png";
+import mostaql from "./company/mostaqel-logo-removebg-preview.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
@@ -30,33 +31,67 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+const toAssetUrl = (asset) =>
+  typeof asset === "string" ? asset : asset?.src ?? "";
+
+const logoUrl = toAssetUrl(logo);
+const backendUrl = toAssetUrl(backend);
+const creatorUrl = toAssetUrl(creator);
+const mobileUrl = toAssetUrl(mobile);
+const webUrl = toAssetUrl(web);
+const githubUrl = toAssetUrl(github);
+const menuUrl = toAssetUrl(menu);
+const closeUrl = toAssetUrl(close);
+const cssUrl = toAssetUrl(css);
+const dockerUrl = toAssetUrl(docker);
+const figmaUrl = toAssetUrl(figma);
+const gitUrl = toAssetUrl(git);
+const htmlUrl = toAssetUrl(html);
+const javascriptUrl = toAssetUrl(javascript);
+const mongodbUrl = toAssetUrl(mongodb);
+const nodejsUrl = toAssetUrl(nodejs);
+const reactjsUrl = toAssetUrl(reactjs);
+const reduxUrl = toAssetUrl(redux);
+const tailwindUrl = toAssetUrl(tailwind);
+const typescriptUrl = toAssetUrl(typescript);
+const threejsUrl = toAssetUrl(threejs);
+const metaUrl = toAssetUrl(meta);
+const mostaqlUrl = toAssetUrl(mostaql);
+const shopifyUrl = toAssetUrl(shopify);
+const starbucksUrl = toAssetUrl(starbucks);
+const teslaUrl = toAssetUrl(tesla);
+const carrentUrl = toAssetUrl(carrent);
+const jobitUrl = toAssetUrl(jobit);
+const tripguideUrl = toAssetUrl(tripguide);
+
 export {
-  logo,
-  backend,
-  creator,
-  mobile,
-  web,
-  github,
-  menu,
-  close,
-  css,
-  docker,
-  figma,
-  git,
-  html,
-  javascript,
-  mongodb,
-  nodejs,
-  reactjs,
-  redux,
-  tailwind,
-  typescript,
-  threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
+  logoUrl as logo,
+  backendUrl as backend,
+  creatorUrl as creator,
+  mobileUrl as mobile,
+  webUrl as web,
+  githubUrl as github,
+  menuUrl as menu,
+  closeUrl as close,
+  cssUrl as css,
+  dockerUrl as docker,
+  figmaUrl as figma,
+  gitUrl as git,
+  htmlUrl as html,
+  javascriptUrl as javascript,
+  mongodbUrl as mongodb,
+  nodejsUrl as nodejs,
+  reactjsUrl as reactjs,
+  reduxUrl as redux,
+  tailwindUrl as tailwind,
+  typescriptUrl as typescript,
+  threejsUrl as threejs,
+  metaUrl as meta,
+  mostaqlUrl as mostaql,
+  shopifyUrl as shopify,
+  starbucksUrl as starbucks,
+  teslaUrl as tesla,
+  carrentUrl as carrent,
+  jobitUrl as jobit,
+  tripguideUrl as tripguide,
 };
