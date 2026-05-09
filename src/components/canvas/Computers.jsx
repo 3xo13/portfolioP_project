@@ -59,30 +59,36 @@ const ComputersCanvas = () => {
     }, []);
 
     return (
-        <Canvas
-            frameloop='demand'
-            shadows={{ type: PCFShadowMap }}
-            dpr={[1, 2]}
-            camera={{
-                position: [
-                    20, 3, 5
-                ],
-                fov: 25
-            }}
-            gl={{
-                preserveDrawingBuffer: true
-            }}>
-            <Suspense fallback={<CanvasLoader />}>
-                <OrbitControls
-                    enableZoom={false}
-                    maxPolarAngle={Math.PI / 2}
-                    minPolarAngle={Math.PI / 2}/>
-                <Computers isMobile={isMobile}/>
-            </Suspense>
+        <div className="h-full w-full overflow-hidden bg-transparent">
+            <Canvas
+                frameloop='demand'
+                shadows={{ type: PCFShadowMap }}
+                dpr={isMobile ? 1 : [1, 2]}
+                camera={{
+                    position: isMobile
+                        ? [18, 3, 6]
+                        : [20, 3, 5],
+                    fov: isMobile ? 28 : 25
+                }}
+                gl={{
+                    preserveDrawingBuffer: true,
+                    antialias: !isMobile,
+                    powerPreference: isMobile ? "low-power" : "high-performance"
+                }}>
+                <Suspense fallback={<CanvasLoader />}>
+                    <OrbitControls
+                        enableZoom={false}
+                        maxPolarAngle={Math.PI / 2}
+                        minPolarAngle={Math.PI / 2}/>
+                    <Computers isMobile={isMobile}/>
+                </Suspense>
 
-            <Preload all="all"/>
-        </Canvas>
+                <Preload all/>
+            </Canvas>
+        </div>
     );
 };
+
+useGLTF.preload("/desktop_pc/scene.gltf");
 
 export default ComputersCanvas;

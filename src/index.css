@@ -13,6 +13,13 @@
   color-scheme: dark;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+  background: #050816;
+}
+
 .hash-span {
   margin-top: -100px;
   padding-bottom: 100px;
